@@ -3,8 +3,8 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-SRCS= main.c \
-bubblesort.c \
+FUNCS = bubblesort.c \
+quicksort.c \
 operations1.c \
 operations2.c \
 operations3.c \
@@ -14,6 +14,8 @@ parse_stack_utils.c \
 utils.c \
 list.c \
 atoi_careful.c
+
+SRCS = main.c $(FUNCS)
 
 ifdef DEBUG
 	CFLAGS += -g3 -fsanitize=address
@@ -32,6 +34,9 @@ LIB_PATHS = -Llibft -Lft_printf
 
 $(NAME): $(SRCS) libft/libft.a ft_printf/libftprintf.a
 	$(CC) $(CFLAGS) $(SRCS) $(INCLUDE_PATHS) $(LIB_PATHS) -lft -lftprintf -o $@
+
+unit-tests: unit-tests.c $(FUNCS)
+	$(CC) $(CFLAGS) $^ $(INCLUDE_PATHS) $(LIB_PATHS) -lft -lftprintf -o $@
 
 clean:
 	make clean -C libft
