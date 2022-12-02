@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 14:31:30 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 14:33:09 by skoulen          ###   ########.fr       */
+/*   Created: 2022/12/02 14:33:15 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/02 14:42:34 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
-{
-	int		n;
-	t_stack	a;
-	t_stack	b;
-	char	**strs;
+/* operations here */
 
-	a = 0;
-	b = 0;
-	n = argc - 1;
-	if (n == 1)
-	{
-		strs = ft_split(argv[1], ' ');
-		parse_stack(strs, &a);
-		free(strs);
-	}
-	else
-	{
-		parse_stack(argv + 1, &a);
-	}
-	bubble_sort(&a, &b);
-	cleanup_list(a);
-	cleanup_list(b);
-	return (0);
+void	ra(t_stack *a, t_stack *b)
+{
+	(void)b;
+	rotate(a);
+	ft_printf("ra\n");
+}
+
+void	rb(t_stack *a, t_stack *b)
+{
+	(void)a;
+	rotate(b);
+	ft_printf("rb\n");
+}
+
+void	rr(t_stack *a, t_stack *b)
+{
+	ra(a, b);
+	rb(a, b);
+	ft_printf("rrr\n");
 }

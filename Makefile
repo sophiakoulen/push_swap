@@ -5,10 +5,19 @@ NAME = push_swap
 
 SRCS= main.c \
 bubblesort.c \
-operations.c \
+operations1.c \
+operations2.c \
+operations3.c \
+operations_utils.c \
 parse_stack.c \
+parse_stack_utils.c \
 utils.c \
-list.c
+list.c \
+atoi_careful.c
+
+ifdef DEBUG
+	CFLAGS += -g3 -fsanitize=address
+endif
 
 all: $(NAME)
 
@@ -33,3 +42,6 @@ fclean:
 	make fclean -C ft_printf LIBFT_PATH=../libft
 
 re: fclean all
+
+test: $(NAME) checker
+	./push_swap $(ARG) | ./checker $(ARG)

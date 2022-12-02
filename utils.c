@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/02 14:32:12 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/02 14:46:39 by skoulen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	empty(t_stack *s)
@@ -10,26 +22,28 @@ int	first(t_stack *s)
 	return ((*s)->val);
 }
 
-int second(t_stack *s)
+int	second(t_stack *s)
 {
 	return ((*s)->next->val);
 }
 
 void	print_stack(t_stack *a)
 {
-	t_list *first;
+	t_list	*first;
+	t_list	*iter;
 
 	first = *a;
+	iter = *a;
 	if (!first)
 	{
 		ft_printf("(empty stack)\n");
 	}
-	ft_printf("%d ", (*a)->val);
-	*a = (*a)->next;
-	while (*a != first)
+	ft_printf("%d ", iter->val);
+	iter = iter->next;
+	while (iter != first)
 	{
-		ft_printf("%d ", (*a)->val);
-		*a = (*a)->next;
+		ft_printf("%d ", iter->val);
+		iter = iter->next;
 	}
 	ft_printf("\n");
 }

@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 14:31:30 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 14:33:09 by skoulen          ###   ########.fr       */
+/*   Created: 2022/12/02 14:40:42 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/02 14:42:45 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	pa(t_stack *a, t_stack *b)
 {
-	int		n;
-	t_stack	a;
-	t_stack	b;
-	char	**strs;
+	push(a, pop(b));
+	ft_printf("pa\n");
+}
 
-	a = 0;
-	b = 0;
-	n = argc - 1;
-	if (n == 1)
-	{
-		strs = ft_split(argv[1], ' ');
-		parse_stack(strs, &a);
-		free(strs);
-	}
-	else
-	{
-		parse_stack(argv + 1, &a);
-	}
-	bubble_sort(&a, &b);
-	cleanup_list(a);
-	cleanup_list(b);
-	return (0);
+void	pb(t_stack *a, t_stack *b)
+{
+	push(b, pop(a));
+	ft_printf("pb\n");
+}
+
+void	sa(t_stack *a, t_stack *b)
+{
+	(void)b;
+	swap(a);
+	ft_printf("sa\n");
+}
+
+void	sb(t_stack *a, t_stack *b)
+{
+	(void)a;
+	swap(b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	sa(a, b);
+	sb(a, b);
+	ft_printf("ss\n");
 }
