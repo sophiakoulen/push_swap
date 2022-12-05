@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:34:37 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 15:02:35 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:28:01 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,13 @@ t_list	*pop(t_stack *s)
 	t_list	*next;
 
 	ret = *s;
-	ret->previous = 0;
-	ret->next = 0;
 	if ((*s)->next != *s)
 	{
 		prev = (*s)->previous;
 		next = (*s)->next;
 		prev->next = next;
 		next->previous = prev;
+		*s = next;
 	}
 	else
 	{

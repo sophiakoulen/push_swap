@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:03:42 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 15:43:42 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/05 10:52:40 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	add_digit(int *n, int digit, int sign)
 	int	tmp;
 
 	tmp = *n * 10;
-	if (*n != 0 && *n / 10 != *n)
+	if (*n != 0 && tmp / 10 != *n)
 	{
 		return (-1);
 	}
