@@ -62,6 +62,10 @@ void	partition(t_stack *a, t_stack *b)
 		else
 			ra(a, b);
 	}
+	while (!empty(b))
+	{
+		pa(a, b);
+	}
 	print_stack(a);
 	print_stack(b);
 }
