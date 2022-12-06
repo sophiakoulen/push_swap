@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/06 15:13:24 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:45:41 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int		atoi_careful(char *str, int *val);
 
 /* bubble sort */
 void	bubble_sort(t_stack *a, t_stack *b);
+
 /* quick sort */
-void	sort(t_stack *a, t_stack *b, int n);
+void	quick_sort(t_stack *a, t_stack *b, int n);
 
 /* parse stack */
 void	parse_stack(char **strs, t_stack *s);
