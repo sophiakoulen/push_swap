@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:32:12 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/05 11:28:29 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:13:15 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	empty(t_stack *s)
 int	first(t_stack *s)
 {
 	return ((*s)->val);
+}
+
+int last(t_stack *s)
+{
+	return ((*s)->previous->val);
 }
 
 int	second(t_stack *s)

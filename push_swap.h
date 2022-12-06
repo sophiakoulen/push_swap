@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/06 12:29:41 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:13:24 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	sort_int_tab(int *tab, int n);
 /* utils */
 int		empty(t_stack *s);
 int		first(t_stack *s);
+int 	last(t_stack *s);
 int		second(t_stack *s);
 void	print_stack(t_stack *a);
 
