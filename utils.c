@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:32:12 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/06 15:13:15 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/07 12:13:46 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int last(t_stack *s)
 int	second(t_stack *s)
 {
 	return ((*s)->next->val);
+}
+
+int	third(t_stack *s)
+{
+	return ((*s)->next->next->val);
 }
 
 void	print_stack(t_stack *a)

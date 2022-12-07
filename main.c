@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:31:30 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/06 15:59:13 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/07 13:33:10 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,14 @@ int	main(int argc, char *argv[])
 	{
 		parse_stack(argv + 1, &a);
 	}
-	//bubble_sort(&a, &b);
-	quick_sort(&a, &b, get_size(a));
-	//print_stack(&a);
+	n = get_size(a);
+	if (n == 3)
+		sort3(&a, &b);
+	else
+		quick_sort(&a, &b, n);
+		
+	print_stack(&a);
+	
 	cleanup_list(a);
 	cleanup_list(b);
 	return (0);

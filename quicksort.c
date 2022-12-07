@@ -37,6 +37,67 @@ static int	get_median(t_stack a, int n, int *med)
 	return (0);
 }
 
+void	sort2(t_stack *a, t_stack *b)
+{
+	if (first(a) < second(a))
+	{
+		return ;
+	}
+	sa(a, b);
+}
+
+void	sort3(t_stack *a, t_stack *b)
+{
+	if (first(a) < second(a) && second(a) < third(a))
+		return ;
+	if (first(a) < second(a) && first(a) < third(a))
+	{
+		pb(a, b);
+		sa(a, b);
+		pa(a, b);
+		return ;
+	}
+	else if (first(a) > second(a) && first(a) > third(a))
+	{
+		ra(a, b);
+		if (first(a) > second(a))
+			sa(a, b);
+	}
+	else
+	{
+		if (second(a) > third(a))
+			rra(a, b);
+		else
+			sa(a, b);
+	}
+}
+
+void	sort3_top(t_stack *a, t_stack *b)
+{
+	if (first(a) < second(a) && second(a) < third(a))
+		return ;
+	if (first(a) < second(a) && first(a) < third(a))
+	{
+		pb(a, b);
+		sa(a, b);
+		pa(a, b);
+		return ;
+	}
+	else if (second(a) < first(a) && second(a) < th)
+	{
+		ra(a, b);
+		if (first(a) > second(a))
+			sa(a, b);
+	}
+	else
+	{
+		if (second(a) > third(a))
+			rra(a, b);
+		else
+			sa(a, b);
+	}
+}
+
 static void	partition(t_stack *a, t_stack *b, int n)
 {
 	int	pivot;
@@ -67,7 +128,7 @@ static void	partition(t_stack *a, t_stack *b, int n)
 	while (first(b) != pivot)
 		rb(a, b);
 	while (!empty(b))
-		pa(a, b);
+        pa(a, b);
 	//print_stack(a);
 }
 
@@ -75,13 +136,24 @@ void	quick_sort(t_stack *a, t_stack *b, int n)
 {
 	if (n < 2)
 		return ;
+
+	if (n == 2)
+	{
+		sort2(a, b);
+		return ;
+	}
+	
 	partition(a, b, n);
+
 	quick_sort(a, b, (n-1)/2);
+
 	for (int i = 0; i < (n-1)/2 + 1; i++)
 	{
-		ra(a, b);
-	}
+        ra(a, b);
+    }
+
 	quick_sort(a, b, n/2);
+	
 	for (int i = 0; i < (n-1)/2 + 1; i++)
 	{
 		rra(a, b);
