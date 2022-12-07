@@ -13,7 +13,8 @@ parse_stack.c \
 parse_stack_utils.c \
 utils.c \
 list.c \
-atoi_careful.c
+atoi_careful.c \
+sort_n.c
 
 SRCS = main.c $(FUNCS)
 

@@ -20,7 +20,7 @@ static int	*stack_to_array(t_stack a, int n)
 	return (arr);
 }
 
-static int	get_median(t_stack a, int n, int *med)
+int	get_median(t_stack a, int n, int *med)
 {
 	int *arr;
 
@@ -37,68 +37,7 @@ static int	get_median(t_stack a, int n, int *med)
 	return (0);
 }
 
-void	sort2(t_stack *a, t_stack *b)
-{
-	if (first(a) < second(a))
-	{
-		return ;
-	}
-	sa(a, b);
-}
-
-void	sort3(t_stack *a, t_stack *b)
-{
-	if (first(a) < second(a) && second(a) < third(a))
-		return ;
-	if (first(a) < second(a) && first(a) < third(a))
-	{
-		pb(a, b);
-		sa(a, b);
-		pa(a, b);
-		return ;
-	}
-	else if (first(a) > second(a) && first(a) > third(a))
-	{
-		ra(a, b);
-		if (first(a) > second(a))
-			sa(a, b);
-	}
-	else
-	{
-		if (second(a) > third(a))
-			rra(a, b);
-		else
-			sa(a, b);
-	}
-}
-
-void	sort3_top(t_stack *a, t_stack *b)
-{
-	if (first(a) < second(a) && second(a) < third(a))
-		return ;
-	if (first(a) < second(a) && first(a) < third(a))
-	{
-		pb(a, b);
-		sa(a, b);
-		pa(a, b);
-		return ;
-	}
-	else if (second(a) < first(a) && second(a) < th)
-	{
-		ra(a, b);
-		if (first(a) > second(a))
-			sa(a, b);
-	}
-	else
-	{
-		if (second(a) > third(a))
-			rra(a, b);
-		else
-			sa(a, b);
-	}
-}
-
-static void	partition(t_stack *a, t_stack *b, int n)
+void	partition(t_stack *a, t_stack *b, int n)
 {
 	int	pivot;
 	int	first_greater;
@@ -132,6 +71,42 @@ static void	partition(t_stack *a, t_stack *b, int n)
 	//print_stack(a);
 }
 
+void	partition2(t_stack *a, t_stack *b, int n)
+{
+	int	pivot;
+
+	if (get_median(*a, n, &pivot) == -1)
+	{
+		ft_printf("malloc failure\n");
+		exit(1);
+	}
+
+	for(int i = 0; i < n - 1; i++)
+	{
+
+		if (first(a) == pivot)
+		{
+			sa(a, b);
+		}
+		if (first(a) < pivot)
+		{
+			pb(a, b);
+			rb(a, b);
+		}
+		else if (first(a) > pivot)
+		{
+			pb(a, b);
+		}
+	}
+	
+	for(int i = 0; i < (n - 1); i++)
+	{
+		pa(a, b);
+		if (first(a) > pivot)
+			sa(a, b);
+	}
+}
+
 void	quick_sort(t_stack *a, t_stack *b, int n)
 {
 	if (n < 2)
@@ -142,6 +117,11 @@ void	quick_sort(t_stack *a, t_stack *b, int n)
 		sort2(a, b);
 		return ;
 	}
+
+	/*if (n == 3)
+	{
+		sort3_top(a, b);
+	}*/
 	
 	partition(a, b, n);
 

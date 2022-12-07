@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/07 13:31:00 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/07 14:58:00 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,18 @@ typedef t_list	*t_stack;
 /* atoi careful */
 int		atoi_careful(char *str, int *val);
 
+/* sort n */
+void	sort2(t_stack *a, t_stack *b);
+void	sort3(t_stack *a, t_stack *b);
+void	sort5(t_stack *a, t_stack *b);
+void	sort3_top(t_stack *a, t_stack *b);
+
 /* bubble sort */
 void	bubble_sort(t_stack *a, t_stack *b);
 
 /* quick sort */
-void	sort3(t_stack *a, t_stack *b);
+int		get_median(t_stack a, int n, int *med);
+void	partition(t_stack *a, t_stack *b, int n);
 void	quick_sort(t_stack *a, t_stack *b, int n);
 
 /* parse stack */
