@@ -48,6 +48,7 @@ void	partition(t_stack *a, t_stack *b, int n)
 		ft_printf("malloc failure\n");
 		exit(1);
 	}
+	ft_printf("partitionning %d\n", n);
 	first_greater = pivot;
 	i = 0;
 	while (i < n)
@@ -64,8 +65,10 @@ void	partition(t_stack *a, t_stack *b, int n)
 	}
 	while (first(a) != first_greater)
 		rra(a, b);
+		/*
 	while (first(b) != pivot)
 		rb(a, b);
+		*/
 	while (!empty(b))
         pa(a, b);
 	//print_stack(a);
@@ -112,29 +115,32 @@ void	quick_sort(t_stack *a, t_stack *b, int n)
 	if (n < 2)
 		return ;
 
+	print_stack(a);
+
 	if (n == 2)
 	{
 		sort2(a, b);
 		return ;
 	}
 
-	/*if (n == 3)
+	if (n == 3)
 	{
 		sort3_top(a, b);
-	}*/
+		return ;
+	}
 	
 	partition(a, b, n);
 
-	quick_sort(a, b, (n-1)/2);
+	quick_sort(a, b, n/2 + n%2);
 
-	for (int i = 0; i < (n-1)/2 + 1; i++)
+	for (int i = 0; i < n/2; i++)
 	{
         ra(a, b);
     }
 
 	quick_sort(a, b, n/2);
 	
-	for (int i = 0; i < (n-1)/2 + 1; i++)
+	for (int i = 0; i < n/2; i++)
 	{
 		rra(a, b);
 	}
