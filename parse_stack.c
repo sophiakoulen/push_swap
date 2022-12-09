@@ -50,6 +50,13 @@ void	parse_stack(char **strs, t_stack *s)
 		free(tab);
 		exit(1);
 	}
+	err = normalize(tab, n);
+	if (err == -1)
+	{
+		ft_dprintf(2, "Error\n");
+		free(tab);
+		exit(1);
+	}
 	err = create_stack(tab, n, s);
 	if (err == -1)
 	{

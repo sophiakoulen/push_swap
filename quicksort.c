@@ -1,40 +1,39 @@
 #include "push_swap.h"
 
-static int	*stack_to_array(t_stack a, int n)
+/*
+	Returns the minimum (if flag_min is true, else the maximum)
+	of the top n elements of the stack. 
+*/
+int	get_min_or_max(t_stack s, int n, int flag_min)
 {
-	int	*arr;
-	int	i;
+	int	res;
+	int i;
 
-	arr = malloc(sizeof(int) * n);
-	if (!arr)
-	{
-		return (0);
-	}
-	i = 0;
+	res = s->val;
+	s = s->next;
+	i = 1;
 	while (i < n)
 	{
-		arr[i] = a->val;
-		a = a->next;
+		if ((s->val < res) == flag_min)
+			res = s->val;
+		s = s->next;
 		i++;
 	}
-	return (arr);
+	return (res);
 }
 
-int	get_median(t_stack a, int n, int *med)
+/*
+	Returns the median of the first n elements of the stack.
+*/
+int	get_median(t_stack a, int n)
 {
-	int *arr;
+	int	min;
+	int	max;
 
-	if (n == 0)
-		return (-1);
-	arr = stack_to_array(a, n);
-	if (!arr)
-		return (-1);
-	sort_int_tab(arr, n);
-	if (n%2 == 0)
-		*med = arr[n/2 - 1];
-	else
-		*med = arr[n/2];
-	return (0);
+	min = get_min_or_max(a, n, 1);
+	max = get_min_or_max(a, n, 0);
+	//ft_printf("min: %d, max: %d\n", min, max);
+	return (min + (max - min)/2);
 }
 
 void	partition(t_stack *a, t_stack *b, int n)
@@ -43,12 +42,9 @@ void	partition(t_stack *a, t_stack *b, int n)
 	int	first_greater;
 	int	i;
 
-	if (get_median(*a, n, &pivot) == -1)
-	{
-		ft_printf("malloc failure\n");
-		exit(1);
-	}
-	ft_printf("partitionning %d\n", n);
+	pivot = get_median(*a, n);
+	//print_stack(a);
+	//ft_printf("partionning %d items with pivot: %d\n", n, pivot);
 	first_greater = pivot;
 	i = 0;
 	while (i < n)
@@ -64,26 +60,30 @@ void	partition(t_stack *a, t_stack *b, int n)
 		i++;
 	}
 	while (first(a) != first_greater)
+	{
 		rra(a, b);
-		/*
+	}
+	/*
+	ft_printf("stack a: ");
+	print_stack(a);
+	ft_printf("stack b: ");
+	print_stack(b);
+	*/
 	while (first(b) != pivot)
+	{
 		rb(a, b);
-		*/
+	}
 	while (!empty(b))
-        pa(a, b);
-	//print_stack(a);
+    {
+		pa(a, b);
+	}
 }
 
 void	partition2(t_stack *a, t_stack *b, int n)
 {
 	int	pivot;
 
-	if (get_median(*a, n, &pivot) == -1)
-	{
-		ft_printf("malloc failure\n");
-		exit(1);
-	}
-
+	pivot = get_median(*a, n);
 	for(int i = 0; i < n - 1; i++)
 	{
 
@@ -113,10 +113,10 @@ void	partition2(t_stack *a, t_stack *b, int n)
 void	quick_sort(t_stack *a, t_stack *b, int n)
 {
 	if (n < 2)
+	{
 		return ;
-
-	print_stack(a);
-
+	}
+	
 	if (n == 2)
 	{
 		sort2(a, b);
@@ -131,16 +131,16 @@ void	quick_sort(t_stack *a, t_stack *b, int n)
 	
 	partition(a, b, n);
 
-	quick_sort(a, b, n/2 + n%2);
+	quick_sort(a, b, n / 2);
 
-	for (int i = 0; i < n/2; i++)
+	for (int i = 0; i < n / 2; i++)
 	{
         ra(a, b);
     }
 
-	quick_sort(a, b, n/2);
+	quick_sort(a, b, n - n / 2);
 	
-	for (int i = 0; i < n/2; i++)
+	for (int i = 0; i < n / 2; i++)
 	{
 		rra(a, b);
 	}

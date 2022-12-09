@@ -29,7 +29,7 @@ typedef struct s_list
 typedef t_list	*t_stack;
 
 /* atoi careful */
-int		atoi_careful(char *str, int *val);
+int		strict_atoi(char *str, int *val);
 
 /* sort n */
 void	sort2(t_stack *a, t_stack *b);
@@ -41,7 +41,7 @@ void	sort3_top(t_stack *a, t_stack *b);
 void	bubble_sort(t_stack *a, t_stack *b);
 
 /* quick sort */
-int		get_median(t_stack a, int n, int *med);
+int		get_median(t_stack a, int n);
 void	partition(t_stack *a, t_stack *b, int n);
 void	quick_sort(t_stack *a, t_stack *b, int n);
 
@@ -54,6 +54,7 @@ int		get_int_tab(char **strs, int **tab, int *n);
 
 /* parse stack utils */
 void	sort_int_tab(int *tab, int n);
+int		normalize(int *tab, int n);
 
 /* utils */
 int		empty(t_stack *s);

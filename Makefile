@@ -13,7 +13,7 @@ parse_stack.c \
 parse_stack_utils.c \
 utils.c \
 list.c \
-atoi_careful.c \
+strict_atoi.c \
 sort_n.c
 
 SRCS = main.c $(FUNCS)
@@ -51,3 +51,16 @@ re: fclean all
 
 test: $(NAME) checker
 	./push_swap $(ARG) | ./checker $(ARG)
+
+mac: checker_mac
+	if [ -f checker ] ; then \
+		mv checker checker_linux  ;\
+	fi
+	mv checker_mac checker
+
+linux: checker_linux
+	if [ -f checker ] ; then \
+		mv checker checker_mac ;\
+	fi
+	mv checker_linux checker
+	

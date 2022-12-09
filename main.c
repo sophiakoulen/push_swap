@@ -32,6 +32,9 @@ int	main(int argc, char *argv[])
 	{
 		parse_stack(argv + 1, &a);
 	}
+	
+	//print_stack(&a);
+	
 	n = get_size(a);
 	if (n == 3)
 		sort3(&a, &b);
@@ -40,7 +43,7 @@ int	main(int argc, char *argv[])
 	else
 		quick_sort(&a, &b, n);
 		
-	print_stack(&a);
+	//print_stack(&a);
 	
 	cleanup_list(a);
 	cleanup_list(b);

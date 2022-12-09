@@ -33,7 +33,7 @@ static int	add_digit(int *n, int digit, int sign)
 /*
 	Returns -1 in case of underflow/overflow, 0 else.
 */
-int	atoi_careful(char *str, int *val)
+int	strict_atoi(char *str, int *val)
 {
 	int	sign;
 	int	nbr;

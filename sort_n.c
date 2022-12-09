@@ -73,8 +73,7 @@ void	sort5(t_stack *a, t_stack *b)
 	int	pivot;
 	int	i;
 
-	if (get_median(*a, 5, &pivot) == -1)
-		exit(1); //malloc failure
+	pivot = get_median(*a, 5);
 	i = 0;
 	while (i < 5)
 	{

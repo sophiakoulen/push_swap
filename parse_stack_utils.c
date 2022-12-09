@@ -102,7 +102,7 @@ int	get_int_tab(char **strs, int **tab, int *n)
 	i = 0;
 	while (i < *n)
 	{
-		res = atoi_careful(strs[i], *tab + i);
+		res = strict_atoi(strs[i], *tab + i);
 		if (res == -1)
 		{
 			free(*tab);
@@ -110,5 +110,39 @@ int	get_int_tab(char **strs, int **tab, int *n)
 		}
 		i++;
 	}
+	return (0);
+}
+
+/*
+Return values:
+	0 in case of SUCCESS
+	1 in case of MALLOC FAILURE
+*/
+int	normalize(int *tab, int n)
+{
+	int	*copy;
+	int	i;
+	int	j;
+
+	copy = copy_tab(tab, n);
+	if (!tab)
+		return (-1);
+	sort_int_tab(copy, n);
+	i = 0;
+	while (i < n)
+	{
+		j = 0;
+		while (j < n)
+		{
+			if (tab[i] == copy[j])
+			{
+				tab[i] = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	free(copy);
 	return (0);
 }
