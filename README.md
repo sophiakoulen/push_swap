@@ -32,7 +32,7 @@ Here is the relevent code snippet from my `push_swap.h` header:
 ```C
 typedef struct s_list
 {
-	int				val;
+	int	val;
 	struct s_list	*next;
 	struct s_list	*previous;
 }	t_list;

@@ -44,6 +44,7 @@ clean:
 	make clean -C ft_printf LIBFT_PATH=../libft
 
 fclean:
+	rm push_swap
 	make fclean -C libft
 	make fclean -C ft_printf LIBFT_PATH=../libft
 
