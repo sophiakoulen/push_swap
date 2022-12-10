@@ -41,6 +41,12 @@ typedef t_list	*t_stack;
 ```
 
 The advantage of this structure is that I can implement all the operations in O(1) constant time, which is elegant.
+To implement those operations, I need the following helper functions:
+- `void	push(t_stack *s, t_list *item)`: Push item on top of stack s. This is just equates to inserting an element at the beginning of a linked list. Note that the `previous` pointer of the newly inserted element will point to the last element of the stack.
+- `t_list	*pop(t_stack *s)`: Detaches the first element of the stack and returns a pointer to it.
+- `void	rotate(t_stack *s)`: Rotate stack. First element becomes the last, etc. This is done very simply by just shifting the `s` pointer to point to the next item.
+- `void reverse_rotate(t_stack *s)`:  Reverse rotate stack. Last element becomes the first, etc.
+
 
 ## finding a suitable sorting algorithm
 
