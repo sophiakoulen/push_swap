@@ -3,9 +3,9 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-FUNCS = bubblesort.c \
-quicksort.c \
-operations1.c \
+ALGO = $(addprefix algorithms/,bubblesort.c quicksort.c)
+
+FUNCS = operations1.c \
 operations2.c \
 operations3.c \
 operations_utils.c \
@@ -16,7 +16,7 @@ list.c \
 strict_atoi.c \
 sort_n.c
 
-SRCS = main.c $(FUNCS)
+SRCS = main.c $(ALGO) $(FUNCS)
 
 ifdef DEBUG
 	CFLAGS += -g3 -fsanitize=address
