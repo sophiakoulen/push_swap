@@ -30,7 +30,7 @@ libft/libft.a:
 ft_printf/libftprintf.a:
 	make -C ft_printf LIBFT_PATH=../libft
 
-INCLUDE_PATHS = -Ilibft -Ift_printf
+INCLUDE_PATHS = -Ilibft -Ift_printf -I.
 LIB_PATHS = -Llibft -Lft_printf
 
 $(NAME): $(SRCS) libft/libft.a ft_printf/libftprintf.a
@@ -44,7 +44,7 @@ clean:
 	make clean -C ft_printf LIBFT_PATH=../libft
 
 fclean:
-	rm push_swap
+	rm -f push_swap
 	make fclean -C libft
 	make fclean -C ft_printf LIBFT_PATH=../libft
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi_careful.c                                     :+:      :+:    :+:   */
+/*   strict_atoi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:03:42 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/05 10:52:40 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:29:37 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,17 @@ static int	add_digit(int *n, int digit, int sign)
 }
 
 /*
-	Returns -1 in case of underflow/overflow, 0 else.
+	If the given string is a number, val is set to the integer value
+	that the string represents.
+	
+	Return values are:
+		0 in case of success
+		-1 if str is not a valid integer
+	
+	Strings that represent values smaller than INT_MIN or
+	greater than INT_MAX aren't valid integers.
+	Strings that contain characters other than a leading minus or plus
+	sign and digits aren't valid integers.
 */
 int	strict_atoi(char *str, int *val)
 {
@@ -54,6 +64,8 @@ int	strict_atoi(char *str, int *val)
 			return (-1);
 		i++;
 	}
+	if (i == 0 || (str[i] && !ft_isspace(str[i])))
+		return (-1);
 	*val = nbr;
 	return (0);
 }
