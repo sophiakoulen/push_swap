@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-ALGO = $(addprefix algorithms/,bubblesort.c quicksort.c)
+ALGO = $(addprefix algorithms/,bubblesort.c quicksort.c radix.c)
 
 FUNCS = operations1.c \
 operations2.c \

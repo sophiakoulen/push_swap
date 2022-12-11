@@ -69,12 +69,55 @@ The idea of the algorithm is:
 While our list is unsorted, go through the list and swap pairs of elements that are in the wrong order relatively to each other.
 
 Results I got with bubblesort:
-
+- 100 numbers: on average 11.2k operations
+- 500 numbers: on average 298k operations
 
 ### quicksort
 
-Quicksort is generally much quicker than bubblesort, since it has an average time complexity of (O(nlogn)), which is generally the best we can expect from a sorting algorithm.
+Quicksort is generally much quicker than bubblesort, since it has an average time complexity of O(nlogn), which is generally the best we can expect from a sorting algorithm.
 It is, however, a bit more tricky to implement in our case.
 
 The idea of the algorithm is:
 Choose a pivot element and put everything that is smaller than the pivot before it and the rest after it. Now, separately sort those two chunks.
+
+To implement quicksort, I apply the following technique:
+```
+Procedure quicksort(n):
+	partition(n);
+	quicksort(n/2);
+	for 0 to n/2 do:
+		rotate stack a;
+	quicksort(n - n/2);
+	for 0 to n/2 do:
+		reverse rotate stack a;
+```
+```
+Procedure partition(n):
+	pivot <- median of n first items;
+	first_greater <- pivot;
+	for 0 to n do:
+		if first item of a <= pivot:
+			push it to stack b;
+		else:
+			if first_greater == pivot:
+				first_greater <- first;
+			rotate stack a;
+		endif
+	while first item of a != first_greater:
+		reverse rotate stack a;
+	while first item of b != pivot:
+		rotate stack b;
+	while sack b is not empty:
+		push first item of b to stack a;
+```
+
+Results I got with quicksort:
+- 100 numbers: on average 1.63k operations 
+- 500 numbers: on average 12.4k operations
+
+That's already much better! But it's not quick enough yet.
+Our algorithm needs to be more than twice faster.
+
+## Radix sort
+
+Radix sort is also called bucket sort.

@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:31:30 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 09:59:03 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 11:10:20 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char *argv[])
 	else if (n == 5)
 		sort5(&a, &b);
 	else
-		bubble_sort(&a, &b);
+		radix_sort(&a, &b, n);
 		
 	//print_stack(&a);
 	

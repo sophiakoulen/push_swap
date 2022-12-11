@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 09:31:51 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 11:11:01 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	bubble_sort(t_stack *a, t_stack *b);
 int		get_median(t_stack a, int n);
 void	partition(t_stack *a, t_stack *b, int n);
 void	quick_sort(t_stack *a, t_stack *b, int n);
+
+/* radix sort */
+void	radix_sort(t_stack *a, t_stack *b, int n);
 
 /* parse stack */
 void	parse_stack(char **strs, t_stack *s);
