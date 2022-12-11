@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:52:50 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 15:12:44 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:21:22 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ void	partition(t_stack *a, t_stack *b, int n)
 		rb(a, b);
 	while (!empty(b))
 		pa(a, b);
-
-	print_stack(a);
 }
 
 /*

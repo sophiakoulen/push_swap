@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:31:30 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 15:06:39 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:21:14 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	sort(t_stack *a, t_stack *b)
 		}
 		else
 		{
-			quick_sort(a, b, n);
+			radix_sort(a, b, n);
 		}
 	}
 }

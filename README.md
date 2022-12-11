@@ -118,7 +118,7 @@ Results I got with quicksort:
 That's already much better! But it's not quick enough yet.
 Our algorithm needs to be more than twice faster.
 
-## Radix sort
+### radix sort
 
 Radix sort is also called bucket sort.
 The idea is to group like items together until they are sorted.
@@ -144,3 +144,7 @@ Procedure radix(n):
 			push top item of b to stack a;
 	end loop
 ```
+
+Results I got using radix sort:
+- 100 numbers: 1.1k instructions
+- 500 nubers: 6.8k instructions
