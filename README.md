@@ -23,6 +23,12 @@ The list of numbers we need to sort, initially all on stack a.
 **Output:**
 A program consisting of the above instructions, that sorts the list.
 
+## Goal
+- 3 items: max 3 instructions
+- 5 items: max 12 instructions
+- 100 items: less than 700 instructions
+- 500 items: less than 5500 instructions
+
 ## implementing the operations
 
 To easily emulate those operations on a list of integers, I chose to use the doubly linked list data structure.
@@ -61,6 +67,9 @@ It is also very suitable in our case.
 
 The idea of the algorithm is:
 While our list is unsorted, go through the list and swap pairs of elements that are in the wrong order relatively to each other.
+
+Results I got with bubblesort:
+
 
 ### quicksort
 

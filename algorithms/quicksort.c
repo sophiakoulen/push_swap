@@ -32,10 +32,25 @@ int	get_median(t_stack a, int n)
 
 	min = get_min_or_max(a, n, 1);
 	max = get_min_or_max(a, n, 0);
-	//ft_printf("min: %d, max: %d\n", min, max);
 	return (min + (max - min)/2);
 }
 
+/*
+	Partitionning algorithm 1
+
+	Partition the n top elements of stack a:
+	Choose a pivot item and make sure anything smaller than the pivot
+	gets on top of it and anything greater under it.
+
+	To achieve this, of the n elements, put the smaller or equal elements on stack b,
+	and the greater elements at the bottom of stack a.
+
+	When we've done it for the first n elements, we need to put the greater elements
+	on top of the stack again.
+
+	Now, we need to make sure the pivot element gets on top of stack b by rotating it.
+	Then, put all elements of stack b back on stack a.
+*/
 void	partition(t_stack *a, t_stack *b, int n)
 {
 	int	pivot;
@@ -43,8 +58,6 @@ void	partition(t_stack *a, t_stack *b, int n)
 	int	i;
 
 	pivot = get_median(*a, n);
-	//print_stack(a);
-	//ft_printf("partionning %d items with pivot: %d\n", n, pivot);
 	first_greater = pivot;
 	i = 0;
 	while (i < n)
@@ -63,12 +76,6 @@ void	partition(t_stack *a, t_stack *b, int n)
 	{
 		rra(a, b);
 	}
-	/*
-	ft_printf("stack a: ");
-	print_stack(a);
-	ft_printf("stack b: ");
-	print_stack(b);
-	*/
 	while (first(b) != pivot)
 	{
 		rb(a, b);
@@ -79,69 +86,42 @@ void	partition(t_stack *a, t_stack *b, int n)
 	}
 }
 
-void	partition2(t_stack *a, t_stack *b, int n)
-{
-	int	pivot;
-
-	pivot = get_median(*a, n);
-	for(int i = 0; i < n - 1; i++)
-	{
-
-		if (first(a) == pivot)
-		{
-			sa(a, b);
-		}
-		if (first(a) < pivot)
-		{
-			pb(a, b);
-			rb(a, b);
-		}
-		else if (first(a) > pivot)
-		{
-			pb(a, b);
-		}
-	}
-	
-	for(int i = 0; i < (n - 1); i++)
-	{
-		pa(a, b);
-		if (first(a) > pivot)
-			sa(a, b);
-	}
-}
-
+/*
+	Sort the top n elements of stack a:
+	Partition the first n elements.
+	Sort the first halve.
+	Rotate the stack to put the first halve beneath.
+	Sort the second halve.
+	Rotate the stack to put the first halve on top again.
+*/
 void	quick_sort(t_stack *a, t_stack *b, int n)
 {
-	if (n < 2)
-	{
-		return ;
-	}
-	
+	int	i;
+
 	if (n == 2)
 	{
 		sort2(a, b);
-		return ;
 	}
-
-	if (n == 3)
+	else if (n == 3)
 	{
 		sort3_top(a, b);
-		return ;
 	}
-	
-	partition(a, b, n);
-
-	quick_sort(a, b, n / 2);
-
-	for (int i = 0; i < n / 2; i++)
+	else if (n > 3)
 	{
-        ra(a, b);
-    }
-
-	quick_sort(a, b, n - n / 2);
-	
-	for (int i = 0; i < n / 2; i++)
-	{
-		rra(a, b);
+		partition(a, b, n);
+		quick_sort(a, b, n / 2);
+		i = 0;
+		while (i < n / 2)
+		{
+        	ra(a, b);
+			i++;
+    	}
+		quick_sort(a, b, n - n / 2);
+		i = 0;
+		while (i < n / 2)
+		{
+			rra(a, b);
+			i++;
+		}
 	}
 }

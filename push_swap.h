@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/07 14:58:00 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:31:51 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
+
+/* The data structure we'll be using is a circular doubly linked list */
 
 typedef struct s_list
 {
