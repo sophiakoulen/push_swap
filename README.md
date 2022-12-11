@@ -147,4 +147,4 @@ Procedure radix(n):
 
 Results I got using radix sort:
 - 100 numbers: 1.1k instructions
-- 500 nubers: 6.8k instructions
+- 500 numbers: 6.8k instructions
