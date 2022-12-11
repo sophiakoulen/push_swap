@@ -11,10 +11,12 @@ operations3.c \
 operations_utils.c \
 parse_stack.c \
 parse_stack_utils.c \
-utils.c \
-list.c \
+utils_1.c \
+utils_2.c \
 strict_atoi.c \
-sort_n.c
+sort_n.c \
+cleanup.c \
+print_stack.c
 
 SRCS = main.c $(ALGO) $(FUNCS)
 

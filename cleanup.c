@@ -1,46 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 14:30:32 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 14:30:37 by skoulen          ###   ########.fr       */
+/*   Created: 2022/12/11 13:21:29 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/11 13:35:24 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*factory(int val)
+void	cleanup_strs(char **strs)
 {
-	t_list	*node;
+	int	i;
 
-	node = malloc(sizeof(*node));
-	if (!node)
-		return (0);
-	node->val = val;
-	node->next = 0;
-	node->previous = 0;
-	return (node);
-}
-
-int	get_size(t_list *node)
-{
-	t_list	*first;
-	int		i;
-
-	first = node;
-	i = 1;
-	if (!first)
-		return (0);
-	node = node->next;
-	while (node != first)
+	i = 0;
+	while (strs[i])
 	{
+		free(strs[i]);
 		i++;
-		node = node->next;
 	}
-	return (i);
+	free(strs);
 }
 
 void	cleanup_list(t_list *node)

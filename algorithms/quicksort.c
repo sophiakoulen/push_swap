@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:52:50 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 11:56:56 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:12:44 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	partition(t_stack *a, t_stack *b, int n)
 		rb(a, b);
 	while (!empty(b))
 		pa(a, b);
+
+	print_stack(a);
 }
 
 /*
@@ -112,14 +114,14 @@ void	quick_sort(t_stack *a, t_stack *b, int n)
 	else if (n > 2)
 	{
 		partition(a, b, n);
-		quick_sort(a, b, n / 2);
+		quick_sort(a, b, (n - 1) / 2);
 		i = 0;
 		while (i < n / 2)
 		{
 			ra(a, b);
 			i++;
 		}
-		quick_sort(a, b, n - n / 2);
+		quick_sort(a, b, (n - 1) - ((n - 1) / 2));
 		i = 0;
 		while (i < n / 2)
 		{

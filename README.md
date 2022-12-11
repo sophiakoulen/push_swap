@@ -121,3 +121,26 @@ Our algorithm needs to be more than twice faster.
 ## Radix sort
 
 Radix sort is also called bucket sort.
+The idea is to group like items together until they are sorted.
+
+First we separate odd and even numbers.
+Then we separate numbers according to their 2nd bit (in binary).
+Then we separate numbers according to their 3rd bit, etc.
+In the end, we get a sorted array.
+
+The time complexity of this algorithm is: O(nlogn).
+
+```
+Procedure radix(n):
+	for d in 0 to ceil(log(n-1)) do:
+		for i in 0 to n do:
+			if d-th bit of top item of a is 0:
+				push it to stack b;
+			else
+				rotate stack a;
+			endif
+		end loop
+		while stack b is not empty:
+			push top item of b to stack a;
+	end loop
+```
