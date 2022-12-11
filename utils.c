@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:32:12 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/07 12:13:46 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 11:52:06 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	first(t_stack *s)
 	return ((*s)->val);
 }
 
-int last(t_stack *s)
+int	last(t_stack *s)
 {
 	return ((*s)->previous->val);
 }
@@ -35,26 +35,4 @@ int	second(t_stack *s)
 int	third(t_stack *s)
 {
 	return ((*s)->next->next->val);
-}
-
-void	print_stack(t_stack *a)
-{
-	t_list	*first;
-	t_list	*iter;
-
-	first = *a;
-	iter = *a;
-	if (!first)
-	{
-		ft_printf("(empty stack)\n");
-		return ;
-	}
-	ft_printf("%d ", iter->val);
-	iter = iter->next;
-	while (iter != first)
-	{
-		ft_printf("%d ", iter->val);
-		iter = iter->next;
-	}
-	ft_printf("\n");
 }

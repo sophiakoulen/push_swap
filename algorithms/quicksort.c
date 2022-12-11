@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 11:52:50 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/11 11:56:56 by skoulen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /*
@@ -7,7 +19,7 @@
 int	get_min_or_max(t_stack s, int n, int flag_min)
 {
 	int	res;
-	int i;
+	int	i;
 
 	res = s->val;
 	s = s->next;
@@ -32,7 +44,7 @@ int	get_median(t_stack a, int n)
 
 	min = get_min_or_max(a, n, 1);
 	max = get_min_or_max(a, n, 0);
-	return (min + (max - min)/2);
+	return (min + (max - min) / 2);
 }
 
 /*
@@ -42,13 +54,14 @@ int	get_median(t_stack a, int n)
 	Choose a pivot item and make sure anything smaller than the pivot
 	gets on top of it and anything greater under it.
 
-	To achieve this, of the n elements, put the smaller or equal elements on stack b,
-	and the greater elements at the bottom of stack a.
+	To achieve this, of the n elements, put the smaller or equal elements on
+	stack b, and the greater elements at the bottom of stack a.
 
-	When we've done it for the first n elements, we need to put the greater elements
-	on top of the stack again.
+	When we've done it for the first n elements, we need to put the greater
+	elements on top of the stack again.
 
-	Now, we need to make sure the pivot element gets on top of stack b by rotating it.
+	Now, we need to make sure the pivot element gets on top of stack b by
+	rotating it.
 	Then, put all elements of stack b back on stack a.
 */
 void	partition(t_stack *a, t_stack *b, int n)
@@ -73,17 +86,11 @@ void	partition(t_stack *a, t_stack *b, int n)
 		i++;
 	}
 	while (first(a) != first_greater)
-	{
 		rra(a, b);
-	}
 	while (first(b) != pivot)
-	{
 		rb(a, b);
-	}
 	while (!empty(b))
-    {
 		pa(a, b);
-	}
 }
 
 /*
@@ -102,20 +109,16 @@ void	quick_sort(t_stack *a, t_stack *b, int n)
 	{
 		sort2(a, b);
 	}
-	else if (n == 3)
-	{
-		sort3_top(a, b);
-	}
-	else if (n > 3)
+	else if (n > 2)
 	{
 		partition(a, b, n);
 		quick_sort(a, b, n / 2);
 		i = 0;
 		while (i < n / 2)
 		{
-        	ra(a, b);
+			ra(a, b);
 			i++;
-    	}
+		}
 		quick_sort(a, b, n - n / 2);
 		i = 0;
 		while (i < n / 2)

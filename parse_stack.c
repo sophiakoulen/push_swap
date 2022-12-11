@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:16:34 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 14:44:16 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 11:38:01 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,44 @@ static int	create_stack(int *tab, int n, t_stack *s)
 	return (0);
 }
 
-void	parse_stack(char **strs, t_stack *s)
+static void	error_handler(int *tab)
+{
+	ft_dprintf(2, "Error\n");
+	free(tab);
+	exit(1);
+}
+
+static void	parse_stack(char **strs, t_stack *s)
 {
 	int	*tab;
 	int	n;
-	int	err;
 
-	err = get_int_tab(strs, &tab, &n);
-	if (err == -1)
-	{
-		ft_dprintf(2, "Error\n");
-		exit(1);
-	}
-	err = check_duplicates(tab, n);
-	if (err == -1)
-	{
-		ft_dprintf(2, "Error\n");
-		free(tab);
-		exit(1);
-	}
-	err = normalize(tab, n);
-	if (err == -1)
-	{
-		ft_dprintf(2, "Error\n");
-		free(tab);
-		exit(1);
-	}
-	err = create_stack(tab, n, s);
-	if (err == -1)
-	{
-		ft_dprintf(2, "Error\n");
-		free(tab);
-		exit(1);
-	}
+	tab = 0;
+	if (get_int_tab(strs, &tab, &n) == -1)
+		error_handler(tab);
+	if (check_duplicates(tab, n) == -1)
+		error_handler(tab);
+	if (normalize(tab, n) == -1)
+		error_handler(tab);
+	if (create_stack(tab, n, s) == -1)
+		error_handler(tab);
 	free(tab);
+}
+
+void	parse_args(int n, char **argv, t_stack *a, t_stack *b)
+{
+	char	**strs;
+
+	*a = 0;
+	*b = 0;
+	if (n == 1)
+	{
+		strs = ft_split(argv[1], ' ');
+		parse_stack(strs, a);
+		free(strs);
+	}
+	else
+	{
+		parse_stack(argv + 1, a);
+	}
 }

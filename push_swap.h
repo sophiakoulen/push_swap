@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 11:11:01 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/11 11:50:46 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,19 @@ void	quick_sort(t_stack *a, t_stack *b, int n);
 void	radix_sort(t_stack *a, t_stack *b, int n);
 
 /* parse stack */
-void	parse_stack(char **strs, t_stack *s);
-int		*copy_tab(int *tab, int n);
-int		check_duplicates(int *tab, int n);
-int		atoi_careful(char *str, int *val);
-int		get_int_tab(char **strs, int **tab, int *n);
+void	parse_args(int n, char **argv, t_stack *a, t_stack *b);
 
 /* parse stack utils */
 void	sort_int_tab(int *tab, int n);
+int		*copy_tab(int *tab, int n);
+int		check_duplicates(int *tab, int n);
+int		get_int_tab(char **strs, int **tab, int *n);
 int		normalize(int *tab, int n);
 
 /* utils */
 int		empty(t_stack *s);
 int		first(t_stack *s);
-int 	last(t_stack *s);
+int		last(t_stack *s);
 int		second(t_stack *s);
 int		third(t_stack *s);
 void	print_stack(t_stack *a);

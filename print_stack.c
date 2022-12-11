@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix.c                                            :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 11:49:43 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 11:49:46 by skoulen          ###   ########.fr       */
+/*   Created: 2022/12/11 11:51:48 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/11 11:52:15 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_stack *a, t_stack *b, int n)
+void	print_stack(t_stack *a)
 {
-	int	mask;
-	int	i;
+	t_list	*first;
+	t_list	*iter;
 
-	mask = 1;
-	while (mask <= (n - 1))
+	first = *a;
+	iter = *a;
+	if (!first)
 	{
-		i = 0;
-		while (i < n)
-		{
-			if (!(first(a) & mask))
-				pb(a, b);
-			else
-				ra(a, b);
-			i++;
-		}
-		while (!empty(b))
-		{
-			pa(a, b);
-		}
-		mask = mask << 1;
+		ft_printf("(empty stack)\n");
+		return ;
 	}
+	ft_printf("%d ", iter->val);
+	iter = iter->next;
+	while (iter != first)
+	{
+		ft_printf("%d ", iter->val);
+		iter = iter->next;
+	}
+	ft_printf("\n");
 }

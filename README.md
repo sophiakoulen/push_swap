@@ -112,8 +112,8 @@ Procedure partition(n):
 ```
 
 Results I got with quicksort:
-- 100 numbers: on average 1.63k operations 
-- 500 numbers: on average 12.4k operations
+- 100 numbers: on average 1.84k operations 
+- 500 numbers: on average 12.5k operations
 
 That's already much better! But it's not quick enough yet.
 Our algorithm needs to be more than twice faster.
