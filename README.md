@@ -84,11 +84,11 @@ To implement quicksort, I apply the following technique:
 ```
 Procedure quicksort(n):
 	partition(n);
-	quicksort(n/2);
-	for 0 to n/2 do:
+	quicksort((n-1)/2);
+	for 0 to n - n/2 do:
 		rotate stack a;
-	quicksort(n - n/2);
-	for 0 to n/2 do:
+	quicksort((n-1) - (n-1)/2);
+	for 0 to n - n/2 do:
 		reverse rotate stack a;
 ```
 ```
@@ -112,8 +112,8 @@ Procedure partition(n):
 ```
 
 Results I got with quicksort:
-- 100 numbers: on average 1.84k operations 
-- 500 numbers: on average 12.5k operations
+- 100 numbers: on average 1.56k operations 
+- 500 numbers: on average 12.0k operations
 
 That's already much better! But it's not quick enough yet.
 Our algorithm needs to be more than twice faster.

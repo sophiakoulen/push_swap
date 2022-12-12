@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:46:51 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 13:50:27 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/12 10:48:13 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 
 # define WHITESPACE " \t\n\v\f\r"
 
+# define RADIX 0
+# define QUICK 1
+# define BUBBLE 2
+
+# ifndef ALGORITHM
+#  define ALGORITHM RADIX
+# endif
+
 /* The data structure we'll be using is a circular doubly linked list */
 
 typedef struct s_list
@@ -31,15 +39,6 @@ typedef struct s_list
 }	t_list;
 
 typedef t_list	*t_stack;
-
-/* atoi careful */
-int		strict_atoi(char *str, int *val);
-
-/* sort n */
-void	sort2(t_stack *a, t_stack *b);
-void	sort3(t_stack *a, t_stack *b);
-void	sort5(t_stack *a, t_stack *b);
-void	sort3_top(t_stack *a, t_stack *b);
 
 /* bubble sort */
 void	bubble_sort(t_stack *a, t_stack *b);
@@ -52,40 +51,26 @@ void	quick_sort(t_stack *a, t_stack *b, int n);
 /* radix sort */
 void	radix_sort(t_stack *a, t_stack *b, int n);
 
-/* parse stack */
+/* parsing */
 void	parse_args(int n, char **argv, t_stack *a, t_stack *b);
 
-/* parse stack utils */
+/* parsing utils */
 void	sort_int_tab(int *tab, int n);
 int		*copy_tab(int *tab, int n);
 int		check_duplicates(int *tab, int n);
 int		get_int_tab(char **strs, int **tab, int *n);
 int		normalize(int *tab, int n);
 
-/* utils 1*/
-int		empty(t_stack *s);
-int		first(t_stack *s);
-int		last(t_stack *s);
-int		second(t_stack *s);
-int		third(t_stack *s);
-void	print_stack(t_stack *a);
+/* atoi careful */
+int		strict_atoi(char *str, int *val);
 
-/* utils 2 */
-t_list	*factory(int val);
-int		get_size(t_list *node);
-int		n_sorted(t_stack s, int n);
-
-/* operations 1*/
+/* operations */
 void	ra(t_stack *a, t_stack *b);
 void	rb(t_stack *a, t_stack *b);
 void	rr(t_stack *a, t_stack *b);
-
-/* operations 2 */
 void	rra(t_stack *a, t_stack *b);
 void	rrb(t_stack *a, t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
-
-/* operations 3 */
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
 void	sa(t_stack *a, t_stack *b);
@@ -99,8 +84,30 @@ void	swap(t_stack *s);
 t_list	*pop(t_stack *s);
 void	push(t_stack *s, t_list *node);
 
+/* stack utils 1*/
+int		empty(t_stack *s);
+int		first(t_stack *s);
+int		last(t_stack *s);
+int		second(t_stack *s);
+int		third(t_stack *s);
+
+/* stack utils 2 */
+t_list	*factory(int val);
+
 /* cleanup */
 void	cleanup_strs(char **strs);
 void	cleanup_list(t_list *node);
+
+/* sort small stack*/
+void	sort2(t_stack *a, t_stack *b);
+void	sort3(t_stack *a, t_stack *b);
+void	sort5(t_stack *a, t_stack *b);
+
+/* sorting utils */
+int		get_size(t_list *node);
+int		n_sorted(t_stack s, int n);
+
+/* debug utils */
+void	print_stack(t_stack *a);
 
 #endif

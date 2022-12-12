@@ -6,7 +6,7 @@
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:19:55 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/02 14:53:55 by skoulen          ###   ########.fr       */
+/*   Updated: 2022/12/12 09:21:24 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int	get_int_tab(char **strs, int **tab, int *n)
 		if (res == -1)
 		{
 			free(*tab);
+			*tab = 0;
 			return (-1);
 		}
 		i++;

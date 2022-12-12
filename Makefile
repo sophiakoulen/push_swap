@@ -1,30 +1,38 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-
 NAME = push_swap
+
+# source files here
 
 ALGO = $(addprefix algorithms/,bubblesort.c quicksort.c radix.c)
 
-FUNCS = operations1.c \
-operations2.c \
-operations3.c \
-operations_utils.c \
-parse_stack.c \
-parse_stack_utils.c \
-utils_1.c \
-utils_2.c \
-strict_atoi.c \
-sort_n.c \
-cleanup.c \
-print_stack.c
+OPERATIONS = $(addprefix operations/, op-1.c op-2.c op-3.c)
 
-SRCS = main.c $(ALGO) $(FUNCS)
+PARSING = $(addprefix parsing/, parsing-utils.c parsing.c strict-atoi.c)
+
+DEBUG_UTILS = $(addprefix debug-utils/, print-stack.c)
+
+STACK_UTILS = $(addprefix stack-utils/, operation-utils.c stack-utils-1.c stack-utils-2.c)
+
+OTHER_UTILS = $(addprefix other-utils/, cleanup.c sort-small.c sorting-utils.c)
+
+SRCS = $(addprefix src/, main.c $(ALGO) $(OPERATIONS) $(PARSING) $(DEBUG_UTILS) $(STACK_UTILS) $(OTHER_UTILS) $(FUNCS))
+
+# parameters here
 
 ifdef DEBUG
 	CFLAGS += -g3 -fsanitize=address
 endif
 
+ifdef ALGORITHM
+	CFLAGS += -D ALGORITHM=$(ALGORITHM)
+endif
+
+# rules here
+
 all: $(NAME)
+
+# dependencies here
 
 libft/libft.a:
 	make -C libft NOLIST=1
@@ -35,11 +43,12 @@ ft_printf/libftprintf.a:
 INCLUDE_PATHS = -Ilibft -Ift_printf -I.
 LIB_PATHS = -Llibft -Lft_printf
 
+# rules for program here
+
 $(NAME): $(SRCS) libft/libft.a ft_printf/libftprintf.a
 	$(CC) $(CFLAGS) $(SRCS) $(INCLUDE_PATHS) $(LIB_PATHS) -lft -lftprintf -o $@
 
-unit-tests: unit-tests.c $(FUNCS)
-	$(CC) $(CFLAGS) $^ $(INCLUDE_PATHS) $(LIB_PATHS) -lft -lftprintf -o $@
+# cleanup here
 
 clean:
 	make clean -C libft
@@ -52,8 +61,7 @@ fclean:
 
 re: fclean all
 
-test: $(NAME) checker
-	./push_swap $(ARG) | ./checker $(ARG)
+# rules for switching between mac and linux checkers
 
 mac: checker_mac
 	if [ -f checker ] ; then \

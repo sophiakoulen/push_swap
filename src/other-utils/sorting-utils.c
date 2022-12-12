@@ -1,53 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sorting-utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoulen <skoulen@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 14:31:30 by skoulen           #+#    #+#             */
-/*   Updated: 2022/12/11 15:21:14 by skoulen          ###   ########.fr       */
+/*   Created: 2022/12/02 14:30:32 by skoulen           #+#    #+#             */
+/*   Updated: 2022/12/12 10:19:00 by skoulen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
-void	sort(t_stack *a, t_stack *b)
+int	get_size(t_list *node)
 {
-	int	n;
+	t_list	*first;
+	int		i;
 
-	n = get_size(*a);
-	if (!n_sorted(*a, n))
+	first = node;
+	i = 1;
+	if (!first)
+		return (0);
+	node = node->next;
+	while (node != first)
 	{
-		if (n == 2)
-		{
-			sort2(a, b);
-		}
-		else if (n == 3)
-		{
-			sort3(a, b);
-		}
-		else if (n == 5)
-		{
-			sort5(a, b);
-		}
-		else
-		{
-			radix_sort(a, b, n);
-		}
+		i++;
+		node = node->next;
 	}
+	return (i);
 }
 
-int	main(int argc, char *argv[])
+/*
+	Checks whether the first n elements of the array are sorted.
+*/
+int	n_sorted(t_stack s, int n)
 {
-	t_stack	a;
-	t_stack	b;
+	int	i;
 
-	parse_args(argc - 1, argv, &a, &b);
-	sort(&a, &b);
-	cleanup_list(a);
-	cleanup_list(b);
-	return (0);
+	i = 0;
+	while (i < n - 1)
+	{
+		if (s->val > s->next->val)
+			return (0);
+		s = s->next;
+		i++;
+	}
+	return (1);
 }
