@@ -68,6 +68,18 @@ It is also very suitable in our case.
 The idea of the algorithm is:
 While our list is unsorted, go through the list and swap pairs of elements that are in the wrong order relatively to each other.
 
+```
+Procedure bubblesort(n):
+	issorted <- false;
+	while issorted != true:
+		issorted <- true;
+		for i from 0 to n - 1 do:
+			if first(a) > second(a):
+				swap a;
+				issorted <- false;
+			rotate a;
+```
+
 Results I got with bubblesort:
 - 100 numbers: on average 11.2k operations
 - 500 numbers: on average 298k operations
